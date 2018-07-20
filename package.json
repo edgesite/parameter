@@ -3,6 +3,7 @@
   "version": "2.3.0",
   "description": "A parameter verify tools.",
   "main": "index.js",
+  "typings": "index.d.ts",
   "files": [
     "index.js"
   ],
