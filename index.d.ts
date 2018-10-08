@@ -11,6 +11,7 @@ type Type = 'number' | 'int' | 'integer' |
 
 type CommonRule = { required?: boolean };
 type ParameterRule = Type |
+  string | { type: string, [key: string]: any } |
   CommonRule & ({ type: 'number' | 'int' | 'integer', min?: number, max?: number } |
   { type: 'date' } |
   { type: 'datetime' | 'dateTime' } |
@@ -21,8 +22,8 @@ type ParameterRule = Type |
   { type: 'url' } |
   { type: 'enum', values?: string[] } |
   { type: 'object', rule: Rules } |
-  { type: 'array', itemType?: Type, rule?: ParameterRule, min?: number, max?: number }) |
-  string | { type: string, [key: string]: any };
+  { type: 'array', itemType: 'object', rule?: Rules, min?: number, max?: number } |
+  { type: 'array', itemType?: Type, rule?: ParameterRule, min?: number, max?: number });
 type Rules<T = any> = { [K in keyof T]: ParameterRule }
 
 interface ParameterError<T> {
